@@ -27,6 +27,7 @@ body {
   margin-left: 50%;
   width: 300px;
   padding: 20px;
+  position: fixed;
   text-align: center;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
@@ -35,8 +36,25 @@ body {
   -moz-box-shadow: 0px 1px 0px rgba(225, 225, 225, 0.18);
   box-shadow: 0px 1px 0px rgba(225, 225, 225, 0.18);
 }
+@media (max-width: 850px) {
+  .form {
+    margin-left: 30% !important;
+  }
+}
+#SignUp, #SignIn {
+  margin-left: 90%;
+  margin-bottom: 10px;
+}
+#signInImg {
+  -webkit-filter: contrast(140%);
+  filter: contrast(140%);
+}
+#formSignUp {
+  display: none;
+  width: 400px !important;
+}
 
-.inp {
+.inp, .inp2 {
   display: block;
   width: 280px;
   margin-bottom: 15px;
@@ -51,8 +69,11 @@ body {
   -moz-transition: all .3s ease-in-out;
   -webkit-transition: all .3s ease-in-out;
 }
+.inp2 {
+  width: 380px !important;
+}
 
-.inp:focus {
+.inp:focus, .inp2:focus {
   background: #fff;
   transition: all .3s ease-in-out;
   -moz-transition: all .3s ease-in-out;
@@ -60,10 +81,21 @@ body {
   color: #777;
 }
 
-.inp::placeholder {
+.inp::placeholder, .inp2::placeholder {
   color: white;
 }
 
+#fname, #lname {
+  width: 170px !important;
+  float: left;
+}
+#lname {
+  margin-left: 20px;
+}
+#err-msg-fname, #err-msg-lname {
+  float: left;
+  width: 190px !important;
+}
 span {
   font: 0.9em Arial;
 }
@@ -76,4 +108,48 @@ span {
 
 .submit {
   display: none;
+}
+
+@-webkit-keyframes popin {
+  from {
+    transform: scale(1,1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(0,0);
+    opacity: 0;
+  }
+}
+
+@keyframes popin {
+  from {
+    transform: scale(1,1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(0,0);
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes popout {
+  from {
+    transform: scale(0,0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1,1);
+    opacity: 1;
+  }
+}
+
+@keyframes popout {
+  from {
+    transform: scale(0,0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1,1);
+    opacity: 1;
+  }
 }
