@@ -49,6 +49,20 @@ body {
   -webkit-filter: contrast(140%);
   filter: contrast(140%);
 }
+
+#signInImg:hover {
+  -webkit-filter: contrast(160%);
+  filter: contrast(160%);
+}
+
+#signUpImg {
+  opacity: 0.6;
+}
+
+#signUpImg:hover {
+  opacity: 1;
+}
+
 #formSignUp {
   display: none;
   width: 400px !important;
