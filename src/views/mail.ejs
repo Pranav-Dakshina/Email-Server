@@ -36,17 +36,17 @@
     <div class="inp2 col-sm-2" id="trash" name="inbox" ng-model="inbox">Trash</div>
   </div>
   <div class="row msgtab">
-    <% for(var i=0; i < content.length; i++) {%>
+    <% for(var i=0; i < msg.length; i++) {%>
       <div class="row msg" >
         <div class="msg_img">
-          <img class="pp bs" src="<%=content[i].img%>" alt="" style="width: 70px; height: 70px;">
+          <img class="pp bs" src="me.jpg" alt="" style="width: 70px; height: 70px;">
         </div>
         <div class="col-xs-9">
           <div class="inp" id="from" name="from" ng-model="from">
-            <%=content[i].from.name%>
+            <%=msg[i].from[0]%>
           </div>
           <div class="inp" id="subj" name="subj" ng-model="subj">
-            <%=content[i].subj%>
+            <%=msg[i].subject[0]%>
           </div>
         </div>
       </div>

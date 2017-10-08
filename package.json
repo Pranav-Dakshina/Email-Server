@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js",
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -14,9 +14,8 @@
     "ejs": "^2.5.7",
     "express": "^4.15.4",
     "imap": "^0.8.19",
+    "mysql": "^2.14.1",
+    "nvm": "0.0.4",
     "util": "^0.10.3"
-  },
-  "devDependencies": {
-    "nodemon": "^1.12.1"
   }
 }

@@ -3,22 +3,31 @@ var bodyParser = require('body-parser');
 // var cookieParser = require('cookie-parser');
 // var passport = require('passport');
 // var session = require('express-session');
-// var sql = require('mysql');
+var sql = require('mysql');
 
 var app = express();
 
-// var con = sql.createConnection({
-//     host: '127.0.0.1',
-//     user: 'Nero',
-//     password: 'Mysql@2210',
-//     database: 'test'
-// });
-//
-// con.connect(function(err) {
-//     console.log(err);
-// });
+var con = sql.createConnection({
+    host: '127.0.0.1',
+    user: 'Nero',
+    password: 'Mysql@2210',
+    database: 'thabpet'
+});
+
+con.connect(function(err) {
+    console.log(err);
+});
 
 var port = process.env.PORT || 5000;
+
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+
+var msg = [{
+  to: ['"pranav@thabpet.com" <pranav@thabpet.com>'],
+  from: ['Pranav Dakshinamurthy <pranav.dakshina@gmail.com>'],
+  subject: ['Hi Pranav'],
+  date: ['Fri, 22 Sep 2017 00:55:52 -0500']
+}];
 
 var content = [{
     img: 'me.jpg',
@@ -94,7 +103,7 @@ var content = [{
   }
 ];
 
-var authRouter = require('./src/routes/login');
+var authRouter = require('./src/routes/login')(con, msg);
 
 app.use(express.static('./public/css'));
 app.use(express.static('./public/fonts'));
@@ -124,17 +133,17 @@ app.use('/auth', authRouter);
 //     res.redirect('/mail');
 // });
 
-app.get('/login', function(req, res) {
-  res.render('slogin', {
-    title: 'LogIn',
-    content: content
-  });
-});
+// app.get('/login', function(req, res) {
+//   res.render('slogin', {
+//     title: 'LogIn',
+//     content: content
+//   });
+// });
 
 app.get('/mail', function(req, res) {
   res.render('mail', {
     title: 'Mail',
-    content: content,
+    msg: msg,
     back: 'back3.jpg'
   });
 });
