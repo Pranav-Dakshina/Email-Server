@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="https://thabpet.com/" />
+  <title>
+    <%=title%>
+  </title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="mstyles.css">
+  <link rel="icon" type="image/x-icon" href="tp logo small.jpg">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="animate.js"></script>
+</head>
+
+<body ng-app="myApp" onload="signAnimate()">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="thabpet text-center">
+        Thabpet
+      </div>
+    </div>
+
+    <div class="row">
+      <form class="form" id="formSignIn" action="/auth/signIn" method="post" ng-controller="signInController" name="signInForm" novalidate>
+        <div name="SignUp" id="SignUp">
+          <img id="signUpImg" src="signUp.png" alt="" value="Sign Up" style="width: 30px; height: 30px;">
+        </div>
+        <input class="inp" id="user" type="text" name="user" ng-model="user" placeholder="Username" required>
+        <div class="err-msg">
+          <span ng-show="signInForm.user.$dirty && signInForm.user.$invalid">
+      <span ng-show="signInForm.user.$error.required">Username is required</span>
+          </span>
+        </div>
+        <br>
+        <input class="inp" id="pass" type="text" name="pass" ng-model="pass" placeholder="Password" required>
+        <div class="err-msg">
+          <span ng-show="signInForm.pass.$dirty && signInForm.pass.$invalid">
+      <span ng-show="signInForm.pass.$error.required">Password is required</span>
+          </span>
+        </div>
+        <input class="submit" type="submit" name="submit" ng-disabled="signInForm.user.$dirty && signInForm.user.$invalid || signInForm.pass.$dirty && signInForm.pass.$invalid">
+      </form>
+
+      <!-- <form class="form" id="formSignUp" ng-submit="submit2()" ng-controller="signUpController" name="signUpForm" novalidate> -->
+      <form class="form" id="formSignUp" action="/auth/signUp" method="post" name="signUpForm" novalidate>
+        <div name="SignIn" id="SignIn">
+          <img id="signInImg" src="signIn.png" alt="" value="Sign In" style="width: 30px; height: 30px; opacity: 1">
+        </div>
+        <input class="inp" id="fname" type="text" name="fname" ng-model="fname" placeholder="First name" required>
+        <input class="inp" id="lname" type="text" name="lname" ng-model="lname" placeholder="Last name" required>
+        <div class="err-msg" id="err-msg-fname">
+          <span ng-show="signUpForm.fname.$dirty && signUpForm.fname.$invalid">
+      <span ng-show="signUpForm.fname.$error.required">First name is required</span>
+          </span>
+        </div>
+        <div class="err-msg" id="err-msg-lname">
+          <span ng-show="signUpForm.lname.$dirty && signUpForm.lname.$invalid">
+      <span ng-show="signUpForm.lname.$error.required">Last name is required</span>
+          </span>
+        </div>
+        <br>
+        <input class="inp" id="email" type="email" name="email" ng-model="email" placeholder="Email" required>
+        <div class="err-msg">
+          <span ng-show="signUpForm.email.$dirty && signUpForm.email.$invalid">
+      <span ng-show="signUpForm.email.$error.required">Email is required</span>
+          </span>
+        </div>
+        <!-- <br> -->
+        <input class="inp" id="passSU1" type="password" name="passSU1" ng-model="passSU1" placeholder="Password" required>
+        <div class="err-msg">
+          <span ng-show="signUpForm.passSU1.$dirty && signUpForm.passSU1.$invalid">
+      <span ng-show="signUpForm.passSU1.$error.required">Password is required</span>
+          </span>
+        </div>
+        <!-- <br> -->
+        <input class="inp" id="passSU2" type="password" name="passSU2" ng-model="passSU2" placeholder="Repeat Password" required>
+        <div class="err-msg">
+          <span ng-show="signUpForm.passSU2.$dirty && signUpForm.passSU2.$invalid">
+      <span ng-show="signUpForm.passSU2.$error.required">Repeat Password is required</span>
+          </span>
+        </div>
+        <input class="submit" type="submit" name="submit" ng-disabled="signInForm.user.$dirty && signInForm.user.$invalid || signInForm.pass.$dirty && signInForm.pass.$invalid">
+      </form>
+    </div>
+  </div>
+</body>
+<script src="signin.js"></script>
+
+</html>

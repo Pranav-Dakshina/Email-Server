@@ -4,6 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="alternate" media="handheld" href="https://m.thabpet.com/">
   <title>
     <%=title%>
   </title>
@@ -18,7 +19,8 @@
   <div class="thabpet">
     Thabpet
   </div>
-  <form class="form" id="formSignIn" ng-submit="submit()" ng-controller="signInController" name="signInForm" novalidate>
+  <!-- <form class="form" id="formSignIn" ng-submit="submit()" ng-controller="signInController" name="signInForm" novalidate> -->
+  <form class="form" id="formSignIn" action="/auth/signIn" method="post" ng-controller="signInController" name="signInForm" novalidate>
     <div name="SignUp" id="SignUp">
       <img id="signUpImg" src="signUp.png" alt="" value="Sign Up" style="width: 30px; height: 30px;" >
     </div>
@@ -29,7 +31,7 @@
       </span>
     </div>
     <br>
-    <input class="inp" id="pass" type="password" name="pass" ng-model="pass" placeholder="Password" required>
+    <input class="inp" id="pass" type="text" name="pass" ng-model="pass" placeholder="Password" required>
     <div class="err-msg">
       <span ng-show="signInForm.pass.$dirty && signInForm.pass.$invalid">
       <span ng-show="signInForm.pass.$error.required">Password is required</span>
@@ -38,7 +40,8 @@
     <input class="submit" type="submit" name="submit" ng-disabled="signInForm.user.$dirty && signInForm.user.$invalid || signInForm.pass.$dirty && signInForm.pass.$invalid">
   </form>
 
-  <form class="form" id="formSignUp" ng-submit="submit2()" ng-controller="signUpController" name="signUpForm" novalidate>
+  <!-- <form class="form" id="formSignUp" ng-submit="submit2()" ng-controller="signUpController" name="signUpForm" novalidate> -->
+  <form class="form" id="formSignUp" action="/auth/signUp" method="post" name="signUpForm" novalidate>
     <div name="SignIn" id="SignIn">
       <img id="signInImg" src="signIn.png" alt="" value="Sign In" style="width: 30px; height: 30px; opacity: 1" >
     </div>
