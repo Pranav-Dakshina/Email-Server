@@ -22,29 +22,20 @@ body {
 }
 
 .form {
-  background: rgba(0, 0, 0, 0.4);
-  margin-top: 200px;
-  margin-left: 50%;
-  width: 300px;
-  padding: 20px;
-  position: fixed;
+  height: 100%;
+  width: 80%;
+  margin-top: 40%;
+  margin-left: 10%;
+  margin-right: 10%;
   text-align: center;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  border-radius: 10px;
-  -webkit-box-shadow: 0px 1px 0px rgba(225, 225, 225, 0.18);
-  -moz-box-shadow: 0px 1px 0px rgba(225, 225, 225, 0.18);
-  box-shadow: 0px 1px 0px rgba(225, 225, 225, 0.18);
+  vertical-align: middle;
 }
-@media (max-width: 850px) {
-  .form {
-    margin-left: 30% !important;
-  }
-}
+
 #SignUp, #SignIn {
   margin-left: 90%;
   margin-bottom: 10px;
 }
+
 #signInImg {
   -webkit-filter: contrast(140%);
   filter: contrast(140%);
@@ -65,17 +56,16 @@ body {
 
 #formSignUp {
   display: none;
-  width: 400px !important;
+  margin-top: 20% !important;
 }
 
-.inp, .inp2 {
+.inp {
   display: block;
   width: 280px;
   margin-bottom: 15px;
   padding: 10px;
   border-radius: 4px;
   border: none;
-  /*font: "Book Antiqua";*/
   font-size: 0.8em;
   color: white;
   background: rgba(225, 225, 225, 0.1);
@@ -83,11 +73,8 @@ body {
   -moz-transition: all .3s ease-in-out;
   -webkit-transition: all .3s ease-in-out;
 }
-.inp2 {
-  width: 380px !important;
-}
 
-.inp:focus, .inp2:focus {
+.inp:focus {
   background: #fff;
   transition: all .3s ease-in-out;
   -moz-transition: all .3s ease-in-out;
@@ -95,21 +82,10 @@ body {
   color: #777;
 }
 
-.inp::placeholder, .inp2::placeholder {
+.inp::placeholder {
   color: white;
 }
 
-#fname, #lname {
-  width: 170px !important;
-  float: left;
-}
-#lname {
-  margin-left: 20px;
-}
-#err-msg-fname, #err-msg-lname {
-  float: left;
-  width: 190px !important;
-}
 span {
   font: 0.9em Arial;
 }
@@ -126,44 +102,44 @@ span {
 
 @-webkit-keyframes popin {
   from {
-    transform: scale(1,1);
+    transform: scale(1, 1);
     opacity: 1;
   }
   to {
-    transform: scale(0,0);
+    transform: scale(0, 0);
     opacity: 0;
   }
 }
 
 @keyframes popin {
   from {
-    transform: scale(1,1);
+    transform: scale(1, 1);
     opacity: 1;
   }
   to {
-    transform: scale(0,0);
+    transform: scale(0, 0);
     opacity: 0;
   }
 }
 
 @-webkit-keyframes popout {
   from {
-    transform: scale(0,0);
+    transform: scale(0, 0);
     opacity: 0;
   }
   to {
-    transform: scale(1,1);
+    transform: scale(1, 1);
     opacity: 1;
   }
 }
 
 @keyframes popout {
   from {
-    transform: scale(0,0);
+    transform: scale(0, 0);
     opacity: 0;
   }
   to {
-    transform: scale(1,1);
+    transform: scale(1, 1);
     opacity: 1;
   }
 }

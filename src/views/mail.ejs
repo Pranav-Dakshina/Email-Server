@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>
+    <%=title%>
+  </title>
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script> -->
+  <link rel="stylesheet" type="text/css" href="mailstyle.css">
+  <link rel="icon" type="image/x-icon" href="tp logo small.jpg">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!--<script src="animate.js"></script> -->
+</head>
+
+<body style="background-image:url(<%=back%>)" onload="activetab()">
+  <div class="container-fluid main">
+    <div class="row topbar">
+      <div class="thabpet col-sm-2" onclick="location.href='http://localhost:5000/';" style="cursor: pointer;">Thabpet</div>
+      <div class="inp srch col-sm-3">
+        <input id="search" type="text" name="search" ng-model="search" placeholder="Search">
+        <img id="img_srch" src="search2.png" alt="">
+      </div>
+      <div class="dp col-sm-1">
+        <img src="me.jpg" alt="" style="width: 40px; height: 40px; border-radius: 25%">
+      </div>
+    </div>
+    <div class="row mainbar">
+      <div class="col-sm-2" id="compose" name="compose" ng-model="compose">Compose Mail</div>
+      <div class="inp2 col-sm-2" id="inbox" name="inbox" ng-model="inbox">Inbox</div>
+      <div class="inp2 col-sm-2" id="sent" name="inbox" ng-model="inbox">Sent</div>
+      <div class="inp2 col-sm-2" id="drafts" name="inbox" ng-model="inbox">Drafts</div>
+      <!-- <div class="inp2 bs" id="outbox" name="inbox" ng-model="inbox">Outbox</div> -->
+      <div class="inp2 col-sm-2" id="spam" name="inbox" ng-model="inbox">Spam</div>
+      <div class="inp2 col-sm-2" id="trash" name="inbox" ng-model="inbox">Trash</div>
+    </div>
+    <div class="row">
+      <div class="msgtab">
+        <% for(var i=0; i < content.length; i++) {%>
+          <div class="row msg">
+            <div class="msg_img">
+              <img class="pp bs" src="me.jpg" alt="" style="width: 70px; height: 70px;">
+            </div>
+            <div class="col-xs-9">
+              <div class="inp" id="from" name="from" ng-model="from">
+                <% if(content[i].from.name) {%>
+                  <%=content[i].from.name%>
+                    <%}%>
+                      <%=content[i].from.address%>
+              </div>
+              <div class="inp" id="subj" name="subj" ng-model="subj">
+                <%=content[i].subject%>
+              </div>
+            </div>
+          </div>
+          <%}%>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="mail.js"></script>
+
+</html>
