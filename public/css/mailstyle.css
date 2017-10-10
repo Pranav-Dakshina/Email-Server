@@ -7,6 +7,14 @@ html {
   min-height: 100%;
 }
 
+body {
+  background: no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 body::-webkit-scrollbar-track {
   border-radius: 10px;
   background-color: transparent;
@@ -37,7 +45,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .topbar {
-  height: 50px !important;
+  height: 57px !important;
   margin-bottom: 10px;
 }
 
@@ -120,7 +128,7 @@ body::-webkit-scrollbar-thumb {
   color: white;
 }
 
-.inp2:hover, #img_srch:hover {
+.inp2:hover {
   background: rgba(225, 225, 225, 0.6);
   transition: all .3s ease-in-out;
   -moz-transition: all .3s ease-in-out;
@@ -133,7 +141,7 @@ body::-webkit-scrollbar-thumb {
 
 #from {
   font-weight: bold;
-  font-size: 1.5em;
+  font-size: 1.2em;
 }
 
 #search {
@@ -184,6 +192,13 @@ body::-webkit-scrollbar-thumb {
   border-bottom-right-radius: 2px;
 }
 
+#search:focus + #img_srch:hover {
+ background: rgba(225, 225, 225, 0.3);
+ transition: all .3s ease-in-out;
+ -moz-transition: all .3s ease-in-out;
+ -webkit-transition: all .3s ease-in-out;
+}
+
 #compose {
   color: white;
   padding: 10px 10px 10px 5px;
@@ -202,44 +217,36 @@ body::-webkit-scrollbar-thumb {
 
 @-webkit-keyframes popin {
   from {
-    transform: scale(1, 1);
-    opacity: 1;
+    opacity: 0;
   }
   to {
-    transform: scale(0, 0);
-    opacity: 0;
+    opacity: 1;
   }
 }
 
 @keyframes popin {
   from {
-    transform: scale(1, 1);
-    opacity: 1;
+    opacity: 0;
   }
   to {
-    transform: scale(0, 0);
-    opacity: 0;
+    opacity: 1;
   }
 }
 
 @-webkit-keyframes popout {
   from {
-    transform: scale(0, 0);
-    opacity: 0;
+    visibility: visible;
   }
   to {
-    transform: scale(1, 1);
-    opacity: 1;
+    visibility: hidden;
   }
 }
 
 @keyframes popout {
   from {
-    transform: scale(0, 0);
-    opacity: 0;
+    visibility: visible;
   }
   to {
-    transform: scale(1, 1);
-    opacity: 1;
+    visibility: hidden;
   }
 }

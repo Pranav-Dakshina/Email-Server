@@ -16,13 +16,18 @@
 </head>
 
 <body ng-app="myApp" onload="signAnimate()">
-  <div class="thabpet">
+  <div class="thabpet" onclick="location.href='https://thabpet.com/';" style="cursor: pointer;">
     Thabpet
   </div>
   <!-- <form class="form" id="formSignIn" ng-submit="submit()" ng-controller="signInController" name="signInForm" novalidate> -->
   <form class="form" id="formSignIn" action="/auth/signIn" method="post" ng-controller="signInController" name="signInForm" novalidate>
+    <div class="login-err">
+      <% if(err_message == '1') {%>
+        <span>Incorrect username and password</span>
+      <%}%>
+    </div>
     <div name="SignUp" id="SignUp">
-      <img id="signUpImg" src="signUp.png" alt="" value="Sign Up" style="width: 30px; height: 30px;" >
+      <img id="signUpImg" src="signUp.png" alt="" value="Sign Up" style="width: 30px; height: 30px;">
     </div>
     <input class="inp" id="user" type="text" name="user" ng-model="user" placeholder="Username" required>
     <div class="err-msg">
@@ -43,7 +48,7 @@
   <!-- <form class="form" id="formSignUp" ng-submit="submit2()" ng-controller="signUpController" name="signUpForm" novalidate> -->
   <form class="form" id="formSignUp" action="/auth/signUp" method="post" name="signUpForm" novalidate>
     <div name="SignIn" id="SignIn">
-      <img id="signInImg" src="signIn.png" alt="" value="Sign In" style="width: 30px; height: 30px; opacity: 1" >
+      <img id="signInImg" src="signIn.png" alt="" value="Sign In" style="width: 30px; height: 30px; opacity: 1">
     </div>
     <input class="inp2" id="fname" type="text" name="fname" ng-model="fname" placeholder="First name" required>
     <input class="inp2" id="lname" type="text" name="lname" ng-model="lname" placeholder="Last name" required>

@@ -20,7 +20,7 @@
 <body ng-app="myApp" onload="signAnimate()">
   <div class="container-fluid">
     <div class="row">
-      <div class="thabpet text-center">
+      <div class="thabpet text-center" onclick="location.href='https://m.thabpet.com/';" style="cursor: pointer;">
         Thabpet
       </div>
     </div>
@@ -63,7 +63,6 @@
       <span ng-show="signUpForm.lname.$error.required">Last name is required</span>
           </span>
         </div>
-        <br>
         <input class="inp" id="email" type="email" name="email" ng-model="email" placeholder="Email" required>
         <div class="err-msg">
           <span ng-show="signUpForm.email.$dirty && signUpForm.email.$invalid">

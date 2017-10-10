@@ -8,7 +8,7 @@ html {
 }
 
 body {
-  background: url(back3.jpg) no-repeat fixed;
+  background: url(back3.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -16,7 +16,8 @@ body {
 }
 
 .thabpet {
-  color: #292929;
+  /*color: #292929;*/
+  color: black;
   font-family: myFirstFont;
   font-size: 40px;
 }
@@ -29,6 +30,12 @@ body {
   margin-right: 10%;
   text-align: center;
   vertical-align: middle;
+}
+
+@media (orientation: landscape) {
+  .form {
+    margin-top: 5% !important;
+  }
 }
 
 #SignUp, #SignIn {
@@ -59,9 +66,15 @@ body {
   margin-top: 20% !important;
 }
 
+@media (orientation: landscape) {
+  #formSignUp {
+    margin-top: 0% !important;
+  }
+}
+
 .inp {
   display: block;
-  width: 280px;
+  width: 100%;
   margin-bottom: 15px;
   padding: 10px;
   border-radius: 4px;

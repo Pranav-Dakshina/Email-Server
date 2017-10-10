@@ -19,7 +19,7 @@
 <body style="background-image:url(<%=back%>)" onload="activetab()">
   <div class="container-fluid main">
     <div class="row topbar">
-      <div class="thabpet col-sm-2" onclick="location.href='http://localhost:5000/';" style="cursor: pointer;">Thabpet</div>
+      <div class="thabpet col-sm-2" onclick="location.href='https://thabpet.com/';" style="cursor: pointer;">Thabpet</div>
       <div class="inp srch col-sm-3">
         <input id="search" type="text" name="search" ng-model="search" placeholder="Search">
         <img id="img_srch" src="search2.png" alt="">
@@ -38,7 +38,7 @@
       <div class="inp2 col-sm-2" id="trash" name="inbox" ng-model="inbox">Trash</div>
     </div>
     <div class="row">
-      <div class="msgtab">
+      <div class="msgtab" id="msgtab">
         <% for(var i=0; i < content.length; i++) {%>
           <div class="row msg">
             <div class="msg_img">
@@ -48,8 +48,8 @@
               <div class="inp" id="from" name="from" ng-model="from">
                 <% if(content[i].from.name) {%>
                   <%=content[i].from.name%>
-                    <%}%>
-                      <%=content[i].from.address%>
+                <%}%>
+                <%=content[i].from.address%>
               </div>
               <div class="inp" id="subj" name="subj" ng-model="subj">
                 <%=content[i].subject%>
@@ -57,6 +57,9 @@
             </div>
           </div>
           <%}%>
+      </div>
+      <div class="conttab">
+
       </div>
     </div>
   </div>
