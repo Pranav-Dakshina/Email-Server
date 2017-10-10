@@ -146,12 +146,12 @@ app.route('/mail')
       res.redirect('/');
     }
   });
-
-app.get('/m-thabpet', function(req, res) {
-  res.render('mobile', {
-    title: 'Thabpet'
-  });
-});
+//
+// app.get('/m-thabpet', function(req, res) {
+//   res.render('mobile', {
+//     title: 'Thabpet'
+//   });
+// });
 
 app.get('/', function(req, res) {
   res.render('index', {

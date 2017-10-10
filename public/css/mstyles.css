@@ -38,9 +38,21 @@ body {
   }
 }
 
+.login-err {
+  width: 80%;
+  margin: 0 10px 10px;
+  color: white;
+  display: block;
+  float: left;
+}
 #SignUp, #SignIn {
-  margin-left: 90%;
   margin-bottom: 10px;
+}
+#SignUp {
+  float: left;
+}
+#SignIn {
+  margin-left: 90%;
 }
 
 #signInImg {

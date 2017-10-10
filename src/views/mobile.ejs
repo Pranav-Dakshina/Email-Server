@@ -27,6 +27,11 @@
 
     <div class="row">
       <form class="form" id="formSignIn" action="/auth/signIn" method="post" ng-controller="signInController" name="signInForm" novalidate>
+        <div class="login-err">
+          <% if(err_message == '1') {%>
+            <span>Incorrect username and password</span>
+          <%}%>
+        </div>
         <div name="SignUp" id="SignUp">
           <img id="signUpImg" src="signUp.png" alt="" value="Sign Up" style="width: 30px; height: 30px;">
         </div>
@@ -37,7 +42,7 @@
           </span>
         </div>
         <br>
-        <input class="inp" id="pass" type="text" name="pass" ng-model="pass" placeholder="Password" required>
+        <input class="inp" id="pass" type="password" name="pass" ng-model="pass" placeholder="Password" required>
         <div class="err-msg">
           <span ng-show="signInForm.pass.$dirty && signInForm.pass.$invalid">
       <span ng-show="signInForm.pass.$error.required">Password is required</span>

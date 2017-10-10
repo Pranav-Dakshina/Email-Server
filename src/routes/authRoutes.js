@@ -17,7 +17,7 @@ var router = function(con, content) {
   authRouter.post('/signIn', passport.authenticate('local', {
     failureRedirect: '/login?err=1'
   }), function(req, res) {
-      console.log('req.user: ' + req.user );
+      // console.log('req.user: ' + req.user );
     var imap = new IMAPserver({
       user: req.body.user,
       password: req.body.pass,
@@ -39,7 +39,7 @@ var router = function(con, content) {
           struct: true
         });
         f.on('message', function(msg, seqno) {
-          console.log('Message #%d', seqno);
+          // console.log('Message #%d', seqno);
           var prefix = '(#' + seqno + ') ';
           msg.on('body', function(stream, info) {
             var mp = new MailParser();
@@ -82,18 +82,18 @@ var router = function(con, content) {
           });
 
           msg.on('end', function() {
-            console.log('Done fetching all messages');
+            // console.log('Done fetching all messages');
             imap.end();
           });
 
         });
 
         f.once('error', function(err) {
-          console.log('Fetch error: ' + err);
+          // console.log('Fetch error: ' + err);
         });
 
         f.once('end', function() {
-          console.log('Done fetching all messages!');
+          // console.log('Done fetching all messages!');
           imap.end();
         });
 
@@ -101,11 +101,11 @@ var router = function(con, content) {
      });
 
       imap.once('error', function(err) {
-        console.log(err);
+        // console.log(err);
       });
 
       imap.once('end', function() {
-        console.log('Cction ended');
+        // console.log('Cction ended');
         req.login(content, function() {
           res.redirect('/mail');
         });
