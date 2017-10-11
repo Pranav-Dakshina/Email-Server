@@ -27,80 +27,6 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 var content = [];
 var err_message = '';
 
-// var content = [{
-//     img: 'me.jpg',
-//     from: {
-//       name: 'Pranav Dakshinamurthy',
-//       email: 'pranav.dakshina@gmail.com'
-//     },
-//     subj: 'Test Mail',
-//     msg: 'Hi Test Mail'
-//   },
-//   {
-//     img: 'sreeni.jpg',
-//     from: {
-//       name: 'Sreenivasa A. B. Ayyalasomayajula',
-//       email: 'shanuayyala@gmail.com'
-//     },
-//     subj: 'Test Mail',
-//     msg: 'Hi Test Mail'
-//   },
-//   {
-//     img: 'me.jpg',
-//     from: {
-//       name: 'Pranav Dakshinamurthy',
-//       email: 'pranav.dakshina@gmail.com'
-//     },
-//     subj: 'Test Mail',
-//     msg: 'Hi Test Mail'
-//   },
-//   {
-//     img: 'sreeni.jpg',
-//     from: {
-//       name: 'Sreenivasa A. B. Ayyalasomayajula',
-//       email: 'shanuayyala@gmail.com'
-//     },
-//     subj: 'Test Mail',
-//     msg: 'Hi Test Mail'
-//   },
-//   {
-//     img: 'me.jpg',
-//     from: {
-//       name: 'Pranav Dakshinamurthy',
-//       email: 'pranav.dakshina@gmail.com'
-//     },
-//     subj: 'Test Mail',
-//     msg: 'Hi Test Mail'
-//   },
-//   {
-//     img: 'sreeni.jpg',
-//     from: {
-//       name: 'Sreenivasa A. B. Ayyalasomayajula',
-//       email: 'shanuayyala@gmail.com'
-//     },
-//     subj: 'Test Mail',
-//     msg: 'Hi Test Mail'
-//   },
-//   {
-//     img: 'me.jpg',
-//     from: {
-//       name: 'Pranav Dakshinamurthy',
-//       email: 'pranav.dakshina@gmail.com'
-//     },
-//     subj: 'Test Mail',
-//     msg: 'Hi Test Mail'
-//   },
-//   {
-//     img: 'sreeni.jpg',
-//     from: {
-//       name: 'Sreenivasa A. B. Ayyalasomayajula',
-//       email: 'shanuayyala@gmail.com'
-//     },
-//     subj: 'Test Mail',
-//     msg: 'Hi Test Mail'
-//   }
-// ];
-
 app.use(express.static('./public/css'));
 app.use(express.static('./public/fonts'));
 app.use(express.static('./public/images'));
@@ -112,7 +38,9 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(cookieParser('Thabpet'));
 app.use(session({
-  secret: 'library'
+  secret: 'thabpet',
+  resave: true,
+  saveUninitialized: true
 }));
 
 require('./src/config/passport')(app, con);
@@ -121,44 +49,18 @@ require('./src/config/passport')(app, con);
 app.set('views', './src/views');
 app.set('view engine', 'ejs');
 
-var authRouter = require('./src/routes/authRoutes')(con, content);
+var indexRouter = require('./src/routes/indexRoutes')(con, content);
+var authRouter = require('./src/routes/authRoutes')(content);
 var errLoginRouter = require('./src/routes/errLoginRoutes')();
+var logoutRouter = require('./src/routes/logoutRoutes')();
+var mailRouter = require('./src/routes/mailRoutes')(content);
+
 
 app.use('/auth', authRouter);
 app.use('/login', errLoginRouter);
-
-app.route('/mail')
-  // .all(function(req, res, next) {
-  //   if (!req.user) {
-  //     res.status(301).redirect('/');
-  //   }
-  //   next();
-  // })
-  .get(function(req, res) {
-    // console.log(req);
-    if (content.length > 0) {
-      res.render('mail', {
-        title: 'Mail',
-        content: content,
-        back: 'back3.jpg'
-      });
-    } else {
-      res.redirect('/');
-    }
-  });
-//
-// app.get('/m-thabpet', function(req, res) {
-//   res.render('mobile', {
-//     title: 'Thabpet'
-//   });
-// });
-
-app.get('/', function(req, res) {
-  res.render('index', {
-    title: 'Thabpet',
-    err_message: ' '
-  });
-});
+app.use('/logout', logoutRouter);
+app.use('/mail', mailRouter);
+app.use('/', indexRouter);
 
 app.listen(port, function(err) {
   console.log('running server on port ' + port);

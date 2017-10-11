@@ -24,8 +24,18 @@
         <input id="search" type="text" name="search" ng-model="search" placeholder="Search">
         <img id="img_srch" src="search2.png" alt="">
       </div>
-      <div class="dp col-sm-1">
+      <div class="dp col-sm-1 dropdown">
+      <div class="dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">
         <img src="me.jpg" alt="" style="width: 40px; height: 40px; border-radius: 25%">
+        <span class="caret"></span>
+      </div>
+      <ul class="dropdown-menu dropdown-adj" role="menu" aria-labelledby="menu1">
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="/logout">Log Out</a></li>
+      <!-- <li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSS</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">JavaScript</a></li>
+      <li role="presentation" class="divider"></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">About Us</a></li>     -->
+    </ul>
       </div>
     </div>
     <div class="row mainbar">

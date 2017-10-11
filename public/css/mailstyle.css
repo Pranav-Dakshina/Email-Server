@@ -47,6 +47,11 @@ body::-webkit-scrollbar-thumb {
 .topbar {
   height: 57px !important;
   margin-bottom: 10px;
+  overflow: visible;
+}
+
+.dropdown-adj {
+  margin: 2px 0 0 -50px !important;
 }
 
 .msgtab {
