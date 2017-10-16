@@ -12,6 +12,13 @@ var router = function(con, content) {
       // console.log(req.cookies.beenHereBefore);
       // console.log(req.cookies.thabIn);
       // console.log(req.cookies.uid);
+      if (req.session.err_message == '1') {
+        req.session.err_message = null;
+        res.render('index', {
+          title: 'Thabpet',
+          err_message: '1'
+        });
+      }
       if (req.cookies.beenHereBefore === 'yes') {
         if (req.cookies.thabIn === 'yes') {
           con.query('select uname, pass from login_info where uid = ?;', req.cookies.uid,
@@ -28,6 +35,7 @@ var router = function(con, content) {
         }
       } else {
         res.cookie('thabIn', 'no');
+        res.cookie('beenHereBefore', 'yes');
         res.render('index', {
           title: 'Thabpet',
           err_message: ' '

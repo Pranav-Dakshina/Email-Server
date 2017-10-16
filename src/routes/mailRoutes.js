@@ -4,7 +4,9 @@ var mailRouter = express.Router();
 var IMAPserver = require('imap');
 const MailParser = require('mailparser').MailParser;
 
-// var login = [];
+var content = [];
+
+var cnt = 0;
 
 var router = function(login) {
 
@@ -12,8 +14,6 @@ var router = function(login) {
     .get(function(req, res) {
       // console.log(req.session.content[0]);
       if (req.session.content) {
-        var content = [];
-        var cnt = 0;
 
         var imap = new IMAPserver({
           user: req.session.content[0].uname,
@@ -30,10 +30,10 @@ var router = function(login) {
         imap.once('ready', function() {
           openInbox(function(err, box) {
             if (err) throw err;
-            imap.sort(['-DATE'], ['ALL'], function(err, sortResults) {
-            if (err) throw err;
-            var f = imap.fetch(sortResults, {
-            // var f = imap.seq.fetch(box.messages.total + ':1', {
+            // imap.sort(['DATE'], ['ALL'], function(err, sortResults) {
+            // if (err) throw err;
+            // var f = imap.fetch(sortResults, {
+            var f = imap.seq.fetch(box.messages.total + ':1', {
               // bodies: 'HEADER.FIELDS (FROM TO SUBJECT DATE)',
               bodies: '',
               struct: true
@@ -43,7 +43,30 @@ var router = function(login) {
               var prefix = '(#' + seqno + ') ';
               msg.on('body', function(stream, info) {
                 var mp = new MailParser();
+                // console.log(mp);
+                mp.on('data', data => {
+                  // if (data.type === 'text') {
+
+                  if (cnt == 0) {
+                    content[cnt]["Text"] = data.textAsHtml;
+                    cnt = cnt + 2;
+                  } else {
+                    if (cnt == box.messages.total) {
+                      content[1]["Text"] = data.textAsHtml;
+                      imap.end();
+                    } else {
+                      content[cnt]["Text"] = data.textAsHtml;
+                      cnt++;
+                    }
+
+                  }
+                  // console.log(content);
+                  //   console.log(data.textAsHtml);
+                  // }
+                });
+
                 mp.on('headers', function(mail) {
+                  // console.log(mail);
                   var mailmsg = {};
 
                   var to = {};
@@ -68,13 +91,7 @@ var router = function(login) {
 
                 });
 
-                mp.on('data', function(mail) {
-                  content[cnt]["Text"] = mail.textAsHtml;
-                  cnt++;
-                });
-
                 stream.pipe(mp);
-
               });
 
               msg.once('attributes', function(attrs) {
@@ -83,7 +100,7 @@ var router = function(login) {
 
               msg.on('end', function() {
                 // console.log('Done fetching all messages');
-                imap.end();
+                // imap.end();
               });
 
             });
@@ -94,29 +111,30 @@ var router = function(login) {
 
             f.once('end', function() {
               // console.log('Done fetching all messages!');
-              imap.end();
+              //  imap.end();
             });
 
+            // });
           });
         });
-         });
 
-          imap.once('error', function(err) {
-            // console.log(err);
-          });
+        imap.once('error', function(err) {
+          // console.log(err);
+        });
 
-          imap.once('end', function() {
-            // console.log('Cction ended');
-            req.login(content, function() {
-              res.render('mail', {
-                title: 'Mail',
-                content: content,
-                back: 'back3.jpg'
-              });
+        imap.once('end', function() {
+          // console.log('Cction ended');
+          req.login(content, function() {
+            // console.log(content);
+            res.render('mail', {
+              title: 'Mail',
+              content: content,
+              back: 'back3.jpg'
             });
           });
+        });
 
-          imap.connect();
+        imap.connect();
 
       } else {
         res.redirect('back');

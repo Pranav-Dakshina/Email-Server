@@ -60,11 +60,13 @@ body::-webkit-scrollbar-thumb {
   overflow-y: scroll;
   border-radius: 4px;
   border: none;
+  float: left;
 }
 
 .msgtab::-webkit-scrollbar-track {
   border-radius: 10px;
   background-color: transparent;
+  margin-top: 10px;
 }
 
 .msgtab::-webkit-scrollbar {
@@ -79,6 +81,18 @@ body::-webkit-scrollbar-thumb {
   background-color: rgba(0, 0, 0, 0.3);
 }
 
+.conttab {
+  display: block;
+  width: 1000px;
+  height: 490px;
+  float: left;
+  background: rgba(0, 0, 0, 0.4);
+  margin: 9px 10px 0px 10px;
+  padding: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
 .thabpet {
   /*color: #292929;*/
   color: white;
@@ -142,6 +156,23 @@ body::-webkit-scrollbar-thumb {
 
 .active {
   background: rgba(225, 225, 225, 0.4);
+}
+
+.inp3 {
+  display: block;
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 4px;
+  border: none;
+  /*font: "Book Antiqua";*/
+  font-size: 1em;
+  color: black;
+  background: white;
+}
+
+.conttext {
+  height: 360px;
 }
 
 #from {

@@ -10,12 +10,12 @@ var router = function() {
   errLoginRouter.route('/')
     .get(function(req, res) {
       var urlParams = new URLSearchParams(req._parsedOriginalUrl.search);
-      var err_message = urlParams.get('err');
-
-      res.render('index', {
-        title: 'Thabpet',
-        err_message: err_message
-      });
+      req.session["err_message"] = urlParams.get('err');
+      res.redirect('/');
+      // res.render('index', {
+      //   title: 'Thabpet',
+      //   err_message: err_message
+      // });
     });
 
   return errLoginRouter;

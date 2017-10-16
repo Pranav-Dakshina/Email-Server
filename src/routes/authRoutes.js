@@ -9,7 +9,7 @@ var router = function(login) {
   authRouter.post('/signIn', passport.authenticate('local', {
     failureRedirect: '/login?err=1'
   }), function(req, res) {
-      console.log('inside auth/signIn');
+      // console.log('inside auth/signIn');
       res.cookie('thabIn', 'yes');
       res.cookie('uid', req.user[0].uid);
       login = req.body;
@@ -20,9 +20,10 @@ var router = function(login) {
 
   authRouter.route('/signUp')
     .post(function(req, res) {
-      req.login(req.body, function() {
-        res.redirect('/mail');
-      });
+      // console.log(req.body);
+      // req.login(req.body, function() {
+      //   res.redirect('/mail');
+      // });
     });
 
   return authRouter;

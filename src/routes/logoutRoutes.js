@@ -8,6 +8,7 @@ var router = function() {
       if (req.cookies.thabIn === 'yes') {
         res.cookie('thabIn', 'no');
         res.clearCookie('uid');
+        req.session.destroy();
         res.redirect('./');
       } else {
         res.redirect('./');

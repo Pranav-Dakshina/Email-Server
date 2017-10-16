@@ -69,7 +69,18 @@
           <%}%>
       </div>
       <div class="conttab">
-
+        <div class="inp3">
+          <% if(content[1].from.name) {%>
+            <%=content[1].from.name%>
+          <%}%>
+          <%=content[1].from.address%>
+        </div>
+        <div class="inp3">
+          <%=content[1].subject%>
+        </div>
+        <div class="inp3 conttext">
+          <%-content[1].Text%>
+        </div>
       </div>
     </div>
   </div>

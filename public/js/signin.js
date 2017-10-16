@@ -24,28 +24,28 @@ app.controller('signInController', function($scope, $http) {
 
 });
 
-app.controller('signUpController', function($scope, $http, $location) {
+app.controller('signUpController', function($scope) {
 
-  // $scope.submit2 = function() {
-  //   var data = {
-  //     user: $scope.email,
-  //     pass: $scope.passSU1
-  //   };
+  // var compareTo = function() {
+  //     return {
+  //         require: "ngModel",
+  //         scope: {
+  //             otherModelValue: "=compareTo"
+  //         },
+  //         link: function(scope, element, attributes, ngModel) {
   //
-  //   $http.post('/auth/signUp',JSON.stringify(data)).then(function(response) {
-  //     if (response.data) {
-  //       console.log("Post Data Submitted Successfully!");
-  //       $location.path = '/auth/signUp';
-  //     }
-  //   }, function (response) {
-  //       console.log("Service not Exists");
-  //       console.log(response.status);
-  //       console.log(response.statusText);
-  //       console.log(response.headers());
-  //   });
+  //             ngModel.$validators.compareTo = function(modelValue) {
+  //                 return modelValue == scope.otherModelValue;
+  //             };
   //
+  //             scope.$watch("otherModelValue", function() {
+  //                 ngModel.$validate();
+  //             });
+  //         }
+  //     };
   // };
-
+  //
+  // module.directive("compareTo", compareTo);
 });
 
 app.controller('logInController', function($scope, $http) {

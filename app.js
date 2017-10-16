@@ -16,7 +16,7 @@ var con = sql.createConnection({
 
 con.connect(function(err) {
  // if (err.length > 0) {
-  console.log(err);
+  // console.log(err);
  // }
 });
 
@@ -63,5 +63,5 @@ app.use('/mail', mailRouter);
 app.use('/', indexRouter);
 
 app.listen(port, function(err) {
-  console.log('running server on port ' + port);
+  // console.log('running server on port ' + port);
 });
