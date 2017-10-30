@@ -7,16 +7,9 @@ html {
   min-height: 100%;
 }
 
-/*body {
-  background: url(back3.jpg) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}*/
-
 body {
-  background: no-repeat center center fixed;
+  background: url(mback8.gif) no-repeat center center fixed;
+  /*background: no-repeat center center fixed;*/
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -36,9 +29,10 @@ body {
 }
 
 .thabpet {
-  color: black;
+  color: white;
   font-family: myFirstFont;
   font-size: 40px;
+  text-shadow: 2px 2px 8px #000000;
 }
 
 .form {
