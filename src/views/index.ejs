@@ -16,6 +16,11 @@
 </head>
 
 <body ng-app="myApp" onload="signAnimate()">
+  <div class="tropbg">
+    <video id="bgvid" playsinline autoplay muted loop>
+     <source src="tropback3.mp4" type="video/mp4">
+    </video>
+  </div>
   <div class="thabpet" onclick="location.href='https://thabpet.com/';" style="cursor: pointer;">
     Thabpet
   </div>
@@ -64,7 +69,7 @@
       </span>
     </div>
     <br>
-    <input class="inp2" id="user" type="user" name="user" ng-model="user" placeholder="user" required>
+    <input class="inp2" id="user" type="user" name="user" ng-model="user" placeholder="Username" required>
     <div class="err-msg">
       <span ng-show="signUpForm.user.$dirty && signUpForm.user.$invalid">
       <span ng-show="signUpForm.user.$error.required">User is required</span>
@@ -85,7 +90,7 @@
       </span> -->
       <span ng-show="signUpForm.passSU2.$dirty">
       <span ng-show="signUpForm.passSU2.$error.noMatch">Password does not match</span>
-    </span>
+      </span>
     </div>
     <input class="submit" type="submit" name="submit" ng-disabled="signInForm.user.$dirty && signInForm.user.$invalid || signInForm.pass.$dirty && signInForm.pass.$invalid">
   </form>
