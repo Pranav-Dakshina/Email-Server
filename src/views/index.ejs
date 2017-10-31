@@ -16,13 +16,23 @@
 </head>
 
 <body ng-app="myApp" onload="signAnimate()">
-  <div class="thabpet">
+  <!-- <div class="tropbg">
+    <video id="bgvid" playsinline autoplay muted loop>
+     <source src="tropback3.mp4" type="video/mp4">
+    </video>
+  </div> -->
+  <div class="thabpet" onclick="location.href='https://thabpet.com/';" style="cursor: pointer;">
     Thabpet
   </div>
   <!-- <form class="form" id="formSignIn" ng-submit="submit()" ng-controller="signInController" name="signInForm" novalidate> -->
   <form class="form" id="formSignIn" action="/auth/signIn" method="post" ng-controller="signInController" name="signInForm" novalidate>
+    <div class="login-err">
+      <% if(err_message == '1') {%>
+        <span>Incorrect username and password</span>
+        <%}%>
+    </div>
     <div name="SignUp" id="SignUp">
-      <img id="signUpImg" src="signUp.png" alt="" value="Sign Up" style="width: 30px; height: 30px;" >
+      <img id="signUpImg" src="signUp.png" alt="" value="Sign Up" style="width: 30px; height: 30px;">
     </div>
     <input class="inp" id="user" type="text" name="user" ng-model="user" placeholder="Username" required>
     <div class="err-msg">
@@ -41,9 +51,9 @@
   </form>
 
   <!-- <form class="form" id="formSignUp" ng-submit="submit2()" ng-controller="signUpController" name="signUpForm" novalidate> -->
-  <form class="form" id="formSignUp" action="/auth/signUp" method="post" name="signUpForm" novalidate>
+  <form class="form" id="formSignUp" action="/auth/signUp" method="post" name="signUpForm" ng-controller="signUpController" novalidate>
     <div name="SignIn" id="SignIn">
-      <img id="signInImg" src="signIn.png" alt="" value="Sign In" style="width: 30px; height: 30px; opacity: 1" >
+      <img id="signInImg" src="signIn.png" alt="" value="Sign In" style="width: 30px; height: 30px; opacity: 1">
     </div>
     <input class="inp2" id="fname" type="text" name="fname" ng-model="fname" placeholder="First name" required>
     <input class="inp2" id="lname" type="text" name="lname" ng-model="lname" placeholder="Last name" required>
@@ -59,10 +69,10 @@
       </span>
     </div>
     <br>
-    <input class="inp2" id="email" type="email" name="email" ng-model="email" placeholder="Email" required>
+    <input class="inp2" id="user" type="user" name="user" ng-model="user" placeholder="Username" required>
     <div class="err-msg">
-      <span ng-show="signUpForm.email.$dirty && signUpForm.email.$invalid">
-      <span ng-show="signUpForm.email.$error.required">Email is required</span>
+      <span ng-show="signUpForm.user.$dirty && signUpForm.user.$invalid">
+      <span ng-show="signUpForm.user.$error.required">User is required</span>
       </span>
     </div>
     <!-- <br> -->
@@ -73,10 +83,13 @@
       </span>
     </div>
     <!-- <br> -->
-    <input class="inp2" id="passSU2" type="password" name="passSU2" ng-model="passSU2" placeholder="Repeat Password" required>
+    <input class="inp2" id="passSU2" type="password" name="passSU2" ng-model="passSU2" compare-to="passSU1" placeholder="Repeat Password" required>
     <div class="err-msg">
-      <span ng-show="signUpForm.passSU2.$dirty && signUpForm.passSU2.$invalid">
+      <!-- <span ng-show="signUpForm.passSU2.$dirty && signUpForm.passSU2.$invalid">
       <span ng-show="signUpForm.passSU2.$error.required">Repeat Password is required</span>
+      </span> -->
+      <span ng-show="signUpForm.passSU2.$dirty">
+      <span ng-show="signUpForm.passSU2.$error.noMatch">Password does not match</span>
       </span>
     </div>
     <input class="submit" type="submit" name="submit" ng-disabled="signInForm.user.$dirty && signInForm.user.$invalid || signInForm.pass.$dirty && signInForm.pass.$invalid">

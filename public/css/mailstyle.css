@@ -7,6 +7,14 @@ html {
   min-height: 100%;
 }
 
+body {
+  background: no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 body::-webkit-scrollbar-track {
   border-radius: 10px;
   background-color: transparent;
@@ -37,8 +45,13 @@ body::-webkit-scrollbar-thumb {
 }
 
 .topbar {
-  height: 50px !important;
+  height: 57px !important;
   margin-bottom: 10px;
+  overflow: visible;
+}
+
+.dropdown-adj {
+  margin: 2px 0 0 -50px !important;
 }
 
 .msgtab {
@@ -47,11 +60,13 @@ body::-webkit-scrollbar-thumb {
   overflow-y: scroll;
   border-radius: 4px;
   border: none;
+  float: left;
 }
 
 .msgtab::-webkit-scrollbar-track {
   border-radius: 10px;
   background-color: transparent;
+  margin-top: 10px;
 }
 
 .msgtab::-webkit-scrollbar {
@@ -66,6 +81,18 @@ body::-webkit-scrollbar-thumb {
   background-color: rgba(0, 0, 0, 0.3);
 }
 
+.conttab {
+  display: block;
+  width: 1000px;
+  height: 490px;
+  float: left;
+  background: rgba(0, 0, 0, 0.4);
+  margin: 9px 10px 0px 10px;
+  padding: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
 .thabpet {
   /*color: #292929;*/
   color: white;
@@ -120,7 +147,7 @@ body::-webkit-scrollbar-thumb {
   color: white;
 }
 
-.inp2:hover, #img_srch:hover {
+.inp2:hover {
   background: rgba(225, 225, 225, 0.6);
   transition: all .3s ease-in-out;
   -moz-transition: all .3s ease-in-out;
@@ -131,9 +158,26 @@ body::-webkit-scrollbar-thumb {
   background: rgba(225, 225, 225, 0.4);
 }
 
+.inp3 {
+  display: block;
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 4px;
+  border: none;
+  /*font: "Book Antiqua";*/
+  font-size: 1em;
+  color: black;
+  background: white;
+}
+
+.conttext {
+  height: 360px;
+}
+
 #from {
   font-weight: bold;
-  font-size: 1.5em;
+  font-size: 1.2em;
 }
 
 #search {
@@ -184,6 +228,13 @@ body::-webkit-scrollbar-thumb {
   border-bottom-right-radius: 2px;
 }
 
+#search:focus + #img_srch:hover {
+ background: rgba(225, 225, 225, 0.3);
+ transition: all .3s ease-in-out;
+ -moz-transition: all .3s ease-in-out;
+ -webkit-transition: all .3s ease-in-out;
+}
+
 #compose {
   color: white;
   padding: 10px 10px 10px 5px;
@@ -202,44 +253,36 @@ body::-webkit-scrollbar-thumb {
 
 @-webkit-keyframes popin {
   from {
-    transform: scale(1, 1);
-    opacity: 1;
+    opacity: 0;
   }
   to {
-    transform: scale(0, 0);
-    opacity: 0;
+    opacity: 1;
   }
 }
 
 @keyframes popin {
   from {
-    transform: scale(1, 1);
-    opacity: 1;
+    opacity: 0;
   }
   to {
-    transform: scale(0, 0);
-    opacity: 0;
+    opacity: 1;
   }
 }
 
 @-webkit-keyframes popout {
   from {
-    transform: scale(0, 0);
-    opacity: 0;
+    visibility: visible;
   }
   to {
-    transform: scale(1, 1);
-    opacity: 1;
+    visibility: hidden;
   }
 }
 
 @keyframes popout {
   from {
-    transform: scale(0, 0);
-    opacity: 0;
+    visibility: visible;
   }
   to {
-    transform: scale(1, 1);
-    opacity: 1;
+    visibility: hidden;
   }
 }
